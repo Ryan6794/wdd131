@@ -1,0 +1,145 @@
+:root {
+  --color-bg: #f4f1ec;
+  --color-card: #ffffff;
+  --color-primary: #003b6f;
+  --color-accent: #006eb6;
+  --color-text: #2c2c2c;
+  --color-muted: #5a5a5a;
+  --color-divider: #c8d8e8;
+
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Lato', Helvetica, sans-serif;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  background-color: var(--color-bg);
+  font-family: var(--font-body);
+  color: var(--color-text);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+
+.page-wrapper {
+  width: 100%;
+  max-width: 720px;
+}
+
+
+.card {
+  background-color: var(--color-card);
+  border: 1px solid #dde5ee;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 3.5rem 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+
+.card-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  line-height: 1.1;
+  margin-bottom: 0.75rem;
+  color: black;
+}
+
+.subtitle {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 1.25rem;
+}
+
+.divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--color-divider), transparent);
+  margin: 0 auto;
+  width: 100%;
+}
+
+
+
+.intro {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--color-text);
+  margin-bottom: 1.6rem;
+}
+
+.subheading {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-style: italic;
+  color: var(--color-muted);
+  margin-bottom: 1.2rem;
+}
+
+
+.mission-list {
+  list-style: none;
+  counter-reset: mission-counter;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  padding: 0;
+  margin: 0;
+}
+
+.mission-list li {
+  counter-increment: mission-counter;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--color-text);
+}
+
+.mission-list li::before {
+  content: counter(mission-counter) ".";
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--color-primary);
+  min-width: 1.4rem;
+  padding-top: 0.08em;
+  flex-shrink: 0;
+}
+
+
+.card-footer {
+  text-align: center;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--color-divider);
+}
+
+.logo {
+  height: 80px;
+  width: auto;
+  display: inline-block;
+  object-fit: contain;
+}
