@@ -1,0 +1,62 @@
+/* Css review */
+
+body {
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    line-height: 1.6;
+    margin: 20px;
+    background-color: #949494;
+}
+
+
+div#content {
+
+    text-align: center;
+    max-width: 60%;
+    border: 1px solid #515151;
+    margin: 40px auto;
+    padding: 50px;
+
+}
+
+p {
+    color: #035f9c;
+    font-size: 1.3em;
+
+}
+
+hr {
+    border: 0;
+    height: 3px;
+    background-color: #334d84;
+    width: 80%;
+}
+
+h1,
+h2,
+p {
+    text-align: center;
+    margin-top: 50px;
+}
+
+#logos {
+    text-align: center;
+}
+
+img {
+    width: 50%;
+    /* display: block;
+    margin: 0 auto; */
+}
+
+
+#topics {
+    line-height: 1.5 em;
+    margin: 0 auto;
+    width: 55%;
+}
+
+.list {
+    list-style-type: none;
+
+}
