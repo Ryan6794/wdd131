@@ -1,4 +1,18 @@
-:root {
+body.dark-mode {
+  --color-bg: #0f1923;
+  --color-card: #1a2535;
+  --color-primary: #7ab3e0;
+  --color-accent: #5b9fd4;
+  --color-text: #dce6f0;
+  --color-muted: #8aa4be;
+  --color-divider: #2a3f5a;
+  --color-title: #e8f0f8;
+  --color-select-bg: #1a2535;
+  --color-select-text: #dce6f0;
+  --color-select-border: #2a3f5a;
+}
+
+body.light-mode {
   --color-bg: #f4f1ec;
   --color-card: #ffffff;
   --color-primary: #003b6f;
@@ -6,10 +20,12 @@
   --color-text: #2c2c2c;
   --color-muted: #5a5a5a;
   --color-divider: #c8d8e8;
-
-  --font-display: 'Cormorant Garamond', Georgia, serif;
-  --font-body: 'Lato', Helvetica, sans-serif;
+  --color-title: black;
+  --color-select-bg: #ffffff;
+  --color-select-text: #2c2c2c;
+  --color-select-border: #b0c4d8;
 }
+
 
 html {
   font-size: 16px;
@@ -21,9 +37,13 @@ body {
   color: var(--color-text);
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 2rem 1rem;
+  transition:
+    background-color var(--transition-speed) ease,
+    color var(--transition-speed) ease;
 }
 
 
@@ -35,20 +55,27 @@ body {
 
 .card {
   background-color: var(--color-card);
-  border: 1px solid #dde5ee;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
+  border: 1px solid var(--color-divider);
+  border-radius: 4px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
   padding: 3.5rem 4rem;
   display: flex;
   flex-direction: column;
   gap: 0;
+  transition:
+    background-color var(--transition-speed) ease,
+    border-color var(--transition-speed) ease,
+    box-shadow var(--transition-speed) ease;
+}
+
+body.dark-mode .card {
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.4);
 }
 
 
 .card-header {
   text-align: center;
   margin-bottom: 2.5rem;
-
 }
 
 .title {
@@ -57,10 +84,10 @@ body {
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--color-primary);
+  color: var(--color-title);
   line-height: 1.1;
   margin-bottom: 0.75rem;
-  color: black;
+  transition: color var(--transition-speed) ease;
 }
 
 .subtitle {
@@ -71,6 +98,7 @@ body {
   text-transform: uppercase;
   color: var(--color-accent);
   margin-bottom: 1.25rem;
+  transition: color var(--transition-speed) ease;
 }
 
 .divider {
@@ -78,8 +106,8 @@ body {
   background: linear-gradient(to right, transparent, var(--color-divider), transparent);
   margin: 0 auto;
   width: 100%;
+  transition: background var(--transition-speed) ease;
 }
-
 
 
 .intro {
@@ -87,6 +115,7 @@ body {
   line-height: 1.8;
   color: var(--color-text);
   margin-bottom: 1.6rem;
+  transition: color var(--transition-speed) ease;
 }
 
 .subheading {
@@ -95,6 +124,7 @@ body {
   font-style: italic;
   color: var(--color-muted);
   margin-bottom: 1.2rem;
+  transition: color var(--transition-speed) ease;
 }
 
 
@@ -116,6 +146,7 @@ body {
   font-size: 1rem;
   line-height: 1.75;
   color: var(--color-text);
+  transition: color var(--transition-speed) ease;
 }
 
 .mission-list li::before {
@@ -127,6 +158,7 @@ body {
   min-width: 1.4rem;
   padding-top: 0.08em;
   flex-shrink: 0;
+  transition: color var(--transition-speed) ease;
 }
 
 
@@ -135,6 +167,7 @@ body {
   margin-top: 3rem;
   padding-top: 2rem;
   border-top: 1px solid var(--color-divider);
+  transition: border-color var(--transition-speed) ease;
 }
 
 .logo {
@@ -142,4 +175,5 @@ body {
   width: auto;
   display: inline-block;
   object-fit: contain;
+  transition: filter var(--transition-speed) ease;
 }
