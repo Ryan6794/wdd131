@@ -1,0 +1,169 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Georgia, serif;
+    background-color: #d0d0d0;
+    color: #111;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+
+header {
+    background-color: #4a90d9;
+    color: white;
+}
+
+.header-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header h1 {
+    font-size: 1.6rem;
+    padding: 0.5rem 1rem;
+    text-align: center;
+}
+
+
+.menu-btn {
+    display: block;
+    width: 100%;
+    background-color: #357abd;
+    color: white;
+    border: none;
+    padding: 0.6rem;
+    font-size: 1rem;
+    cursor: pointer;
+    text-align: center;
+}
+
+.menu-btn:hover {
+    background-color: #2a6099;
+}
+
+nav {
+    display: none;
+
+    flex-direction: column;
+    width: 100%;
+    background-color: #4a90d9;
+    text-align: center;
+}
+
+nav.open {
+    display: flex;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    font-size: 0.95rem;
+}
+
+nav a:hover {
+    background-color: #2a6099;
+}
+
+
+main {
+    flex: 1;
+    padding: 1rem;
+}
+
+main h2 {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    font-weight: normal;
+}
+
+
+/* Gallery - Mobile First (1 column) */
+
+.gallery {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.gallery img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border: 3px solid white;
+    display: block;
+}
+
+
+footer {
+    background-color: #4a90d9;
+    color: white;
+    text-align: center;
+    padding: 0.6rem;
+    font-size: 0.9rem;
+}
+
+
+/* Tablet (2 columns) — min-width: 640px */
+
+@media (min-width: 640px) {
+    .gallery {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .gallery img {
+        height: 220px;
+    }
+
+
+}
+
+
+/* Desktop (3 columns) — min-width: 1024px */
+
+@media (min-width: 1024px) {
+    .gallery {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .gallery img {
+        height: 250px;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .menu-btn {
+        display: none;
+    }
+
+
+    nav {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        width: 100%;
+    }
+
+    nav a {
+        border-top: none;
+        border-left: 1px solid rgba(255, 255, 255, 0.3);
+        padding: 0.4rem 1rem;
+    }
+
+    nav a:first-child {
+        border-left: none;
+    }
+}
