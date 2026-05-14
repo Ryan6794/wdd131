@@ -167,3 +167,50 @@ footer {
         border-left: none;
     }
 }
+
+
+.modal {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+}
+
+.modal-content {
+    position: relative;
+    z-index: 101;
+}
+
+.modal-content img {
+    width: 50vw;
+    height: 65vh;
+    /* width: auto;
+    height: auto; */
+    display: block;
+    border-radius: 8px;
+}
+
+.modal-close {
+    position: absolute;
+    top: -1rem;
+    right: -1rem;
+    background: white;
+    border: none;
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
+}

@@ -7,7 +7,13 @@
     <meta name="description" content="Cool Pics - A gallery of stunning photography" />
     <title>Cool Pics 📷</title>
     <link rel="stylesheet" href="styles.css" />
+    <script src="jscript.js" defer></script>
 </head>
+
+
+
+
+
 
 <body>
 
@@ -44,14 +50,23 @@
         <p>©2025 Not a real site. Or am I?</p>
     </footer>
 
-    <script>
+    <!-- <script>
         const menuBtn = document.getElementById('menuBtn');
         const mainNav = document.getElementById('mainNav');
 
         menuBtn.addEventListener('click', () => {
             mainNav.classList.toggle('open');
         });
-    </script>
+    </script> -->
+
+
+    <div id="modal" class="modal hidden">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">X</button>
+            <img id="modalImg" src="img/norris-full.jpg" alt="Geothermal hot spring with steam rising" />
+        </div>
+    </div>
 
 </body>
 
