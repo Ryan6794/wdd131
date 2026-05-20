@@ -1,8 +1,4 @@
-/* ===========================
-   Kids Read For Fun - Styles
-   =========================== */
 
-/* CSS Custom Properties */
 :root {
     --color-bg: #ffffff;
     --color-header-bg: #ffffff;
@@ -13,7 +9,7 @@
     --color-title: #8b0000;
     --color-nav-link: #8b0000;
     --color-nav-link-hover: #5a0000;
-    --color-star: #f5c518;
+    --color-star: #8a6200;
     --color-footer-text: #333333;
     --font-heading: Georgia, 'Times New Roman', serif;
     --font-body: Georgia, 'Times New Roman', serif;
@@ -25,7 +21,7 @@
     --spacing-xl: 2rem;
 }
 
-/* Reset & Base */
+
 *,
 *::before,
 *::after {
@@ -45,7 +41,7 @@ body {
     flex-direction: column;
 }
 
-/* Skip Navigation Link (Accessibility) */
+
 .skip-link {
     position: absolute;
     top: -999px;
@@ -64,9 +60,7 @@ body {
     top: 0;
 }
 
-/* ===========================
-   HEADER
-   =========================== */
+
 header {
     text-align: center;
     padding: var(--spacing-lg) var(--spacing-md) var(--spacing-sm);
@@ -81,9 +75,7 @@ header h1 {
     letter-spacing: 0.01em;
 }
 
-/* ===========================
-   NAVIGATION
-   =========================== */
+
 nav {
     border-bottom: 1px solid var(--color-border-light);
     padding: var(--spacing-sm) var(--spacing-md);
@@ -119,9 +111,7 @@ nav a:focus-visible {
     border-radius: 2px;
 }
 
-/* ===========================
-   MAIN CONTENT
-   =========================== */
+
 main {
     flex: 1;
     max-width: var(--max-width);
@@ -130,15 +120,12 @@ main {
     padding: 0;
 }
 
-/* ===========================
-   BOOK ARTICLE — MOBILE FIRST
-   Single-column layout
-   =========================== */
+
 article.book-entry {
     border-bottom: 1px solid var(--color-border-light);
     padding: var(--spacing-lg) var(--spacing-md);
 
-    /* Mobile: single column, metadata stacked above */
+
     display: grid;
     grid-template-columns: 1fr;
     grid-template-areas:
@@ -149,7 +136,7 @@ article.book-entry {
     gap: var(--spacing-md);
 }
 
-/* Metadata block */
+
 .book-meta {
     grid-area: meta;
     text-align: right;
@@ -175,7 +162,7 @@ article.book-entry {
     color: var(--color-text);
 }
 
-/* Star Rating */
+
 .star-rating {
     display: block;
     margin-top: 0.25rem;
@@ -187,7 +174,6 @@ article.book-entry {
     font-size: 1.1rem;
 }
 
-/* Visually hidden helper for screen readers */
 .sr-only {
     position: absolute;
     width: 1px;
@@ -200,7 +186,7 @@ article.book-entry {
     border: 0;
 }
 
-/* Book title */
+
 .book-title {
     grid-area: title;
     font-family: var(--font-heading);
@@ -209,7 +195,7 @@ article.book-entry {
     color: var(--color-title);
 }
 
-/* Book cover image */
+
 .book-cover {
     grid-area: cover;
 }
@@ -223,7 +209,7 @@ article.book-entry {
     box-shadow: 2px 3px 8px rgba(0, 0, 0, 0.15);
 }
 
-/* Book description */
+
 .book-description {
     grid-area: description;
     font-size: 0.97rem;
@@ -231,10 +217,7 @@ article.book-entry {
     line-height: 1.65;
 }
 
-/* ===========================
-   LARGER DEVICE LAYOUT
-   Two-column: sidebar meta + main content
-   =========================== */
+
 @media (min-width: 640px) {
     article.book-entry {
         grid-template-columns: 140px 1fr;
@@ -267,9 +250,6 @@ article.book-entry {
     }
 }
 
-/* ===========================
-   FOOTER
-   =========================== */
 footer {
     border-top: 2px solid var(--color-border);
     padding: var(--spacing-md);
@@ -279,9 +259,7 @@ footer {
     color: var(--color-footer-text);
 }
 
-/* ===========================
-   FOCUS STYLES (Accessibility)
-   =========================== */
+
 a:focus-visible,
 button:focus-visible {
     outline: 2px solid var(--color-title);
