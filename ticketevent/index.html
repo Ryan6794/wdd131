@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Ticket</title>
+    <link rel="icon" href="favicon.ico" />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@400;500&display=swap"
+        rel="stylesheet" />
+    <script src="form-validate.js" defer></script>
+</head>
+
+<body>
+
+    <div class="page-wrapper">
+        <div class="card">
+            <h1 class="form-title">Event Ticket</h1>
+
+            <div class="form-body">
+                <div class="field-row">
+                    <div class="field-group">
+                        <label for="first-name">First Name</label>
+                        <input type="text" id="first-name" name="firstName" autocomplete="given-name" />
+                    </div>
+                    <div class="field-group">
+                        <label for="last-name">Last Name</label>
+                        <input type="text" id="last-name" name="lastName" autocomplete="family-name" />
+                    </div>
+                </div>
+
+                <div class="field-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" autocomplete="email" />
+                </div>
+
+                <div class="field-row">
+                    <div class="field-group">
+                        <label for="type">Type</label>
+                        <select id="type" name="ticketType">
+                            <option value="">Choose one</option>
+                            <option value="student">Student</option>
+                            <option value="guest">Guest</option>
+                        </select>
+                    </div>
+                    <div class="field-group">
+                        <label for="event-date">Event Date</label>
+                        <input type="date" id="event-date" name="eventDate" />
+                    </div>
+                </div>
+
+                <div id="extra-field" class="field-group hidden">
+                    <label id="extra-label" for="extra-input">Extra</label>
+                    <input type="text" id="extra-input" name="extraCode" />
+                </div>
+
+                <button id="submit-btn" type="button">Create Ticket</button>
+
+                <ul id="error-list" class="error-list hidden" aria-live="polite"></ul>
+            </div>
+
+            <div id="ticket-result" class="ticket-result hidden" aria-live="polite">
+                <h2>Ticket Created</h2>
+                <p id="result-name"></p>
+                <p id="result-type"></p>
+                <p id="result-date"></p>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

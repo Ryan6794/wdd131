@@ -1,0 +1,165 @@
+/* ── Custom properties ───────────────────────── */
+:root {
+    --bg: #b0bec5;
+    --card-bg: #ffffff;
+    --text: #111111;
+    --label: #222222;
+    --border: #111111;
+    --input-bg: #f0f4f8;
+    --btn-bg: #b0bec5;
+    --btn-border: #111111;
+    --accent: #c0392b;
+    --error-color: #c0392b;
+    --radius: 0.5rem;
+    --font-head: 'Playfair Display', Georgia, serif;
+    --font-body: 'DM Sans', 'Helvetica Neue', sans-serif;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg);
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 2.5rem 1rem 3rem;
+    color: var(--text);
+}
+
+.page-wrapper {
+    width: 100%;
+    max-width: 56rem;
+}
+
+.card {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    padding: 2.5rem 2.75rem 2.75rem;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+}
+
+.form-title {
+    font-family: var(--font-head);
+    font-size: 2.6rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin-bottom: 1.75rem;
+}
+
+.form-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+}
+
+
+.field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.field-group label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--label);
+}
+
+.field-group input,
+.field-group select {
+    width: 100%;
+    padding: 0.65rem 0.75rem;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    background: var(--card-bg);
+    color: var(--text);
+    transition: border-color 0.15s, background 0.15s;
+}
+
+.field-group input:focus,
+.field-group select:focus {
+    outline: none;
+    border-color: #555;
+    background: var(--input-bg);
+}
+
+#submit-btn {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    background: var(--btn-bg);
+    color: var(--text);
+    border: 1.5px solid var(--btn-border);
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: filter 0.15s;
+    margin-top: 0.25rem;
+}
+
+#submit-btn:hover {
+    filter: brightness(0.9);
+}
+
+
+.hidden {
+    display: none !important;
+}
+
+
+.error-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 0.25rem;
+}
+
+.error-list li {
+    font-size: 0.9rem;
+    color: var(--error-color);
+    padding: 0.15rem 0;
+}
+
+.ticket-result {
+    margin-top: 1.75rem;
+    padding-top: 1.5rem;
+    border-top: 1.5px solid var(--border);
+}
+
+.ticket-result h2 {
+    font-family: var(--font-head);
+    font-size: 1.6rem;
+    margin-bottom: 0.75rem;
+}
+
+.ticket-result p {
+    font-size: 0.95rem;
+    margin-bottom: 0.4rem;
+    color: var(--label);
+}
+
+
+@media (max-width: 600px) {
+    .card {
+        padding: 1.5rem 1.25rem;
+    }
+
+    .field-row {
+        grid-template-columns: 1fr;
+    }
+}
