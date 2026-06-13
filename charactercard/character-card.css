@@ -1,0 +1,112 @@
+/* Mobile First */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Palatino Linotype', Palatino, serif;
+    background: #f0f4f8;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 16px;
+}
+
+main {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+
+.card {
+    background: #313131;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.9);
+    width: 100%;
+    max-width: 400px;
+    overflow: hidden;
+}
+
+
+.card-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 15px 15px 0 0;
+    object-fit: cover;
+}
+
+
+.character-name {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #5d747b;
+    padding: 15px 15px 15px 35px;
+    margin: 0;
+}
+
+
+.stats {
+    margin: 10px 15px 7px 35px;
+    text-align: left;
+}
+
+.stats p {
+    margin: 5px 0;
+    color: #f0f4f8;
+    font-size: 0.95em;
+}
+
+
+.buttons {
+    text-align: center;
+    padding-bottom: 8px;
+}
+
+button {
+    padding: 8px 12px;
+    margin: 20px 10px;
+    border: none;
+    border-radius: 8px;
+    background-color: #5d747b;
+    color: #ffffff;
+    font-family: inherit;
+    font-weight: bold;
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: background-color 0.5s ease;
+}
+
+button:hover {
+    background-color: #58605a;
+}
+
+button:focus-visible {
+    outline: 3px solid #a8d0dc;
+    outline-offset: 2px;
+}
+
+
+@media (min-width: 500px) {
+    .card {
+        width: 400px;
+    }
+
+    .stats p {
+        font-size: 1em;
+    }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+    button {
+        transition: none;
+    }
+}

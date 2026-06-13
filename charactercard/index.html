@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Card – Snortleblat</title>
+    <script src="character-card.js" defer></script>
+    <link rel="stylesheet" href="character-card.css">
+
+    <!-- Open Graph (Facebook, LinkedIn, etc.) -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Character Card – Snortleblat">
+    <meta property="og:description"
+        content="Meet Snortleblat, a Level 5 Swamp Beast Diplomat. Attack or level up this mighty creature!">
+    <meta property="og:url" content="https://yourdomain.com/charactercard/">
+    <meta property="og:image" content="https://yourdomain.com/charactercard/images/social-preview.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Character Card – Snortleblat">
+    <meta name="twitter:description"
+        content="Meet Snortleblat, a Level 5 Swamp Beast Diplomat. Attack or level up this mighty creature!">
+    <meta name="twitter:image" content="https://yourdomain.com/charactercard/images/social-preview.png">
+
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+</head>
+
+<body>
+    <main>
+        <div class="card">
+            <img class="card-image" id="character-image" src="images/snortleblat.png"
+                alt="Snortleblat the Swamp Beast Diplomat standing in murky swamp water" width="400" height="300">
+
+            <h1 class="character-name" id="character-name"></h1>
+
+            <div class="stats">
+                <p id="character-class"></p>
+                <p id="character-level"></p>
+                <p id="character-health"></p>
+            </div>
+
+            <div class="buttons">
+                <button id="btn-attack" type="button" aria-label="Attack the character">Attack</button>
+                <button id="btn-level-up" type="button" aria-label="Level up the character">Level Up</button>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
