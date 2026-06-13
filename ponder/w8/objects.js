@@ -8,6 +8,7 @@ const aCourse = {
         { sectionNum: 2, roomNum: 'STC 347', enrolled: 28, days: 'TTh', instructor: 'Sis A' }
     ],
     enrollStudent: function (sectionNum) {
+        // find the right section...Array.findIndex will work here
         const sectionIndex = this.sections.findIndex(
             (section) => section.sectionNum == sectionNum
         );
@@ -17,19 +18,6 @@ const aCourse = {
         }
     }
 };
-
-Console.log(aCourse.code);
-Console.log(aCourse.name);
-
-document.querySelector("#courseName").textContent = aCourse.name;
-document.querySelector("#courseCode").textContent = aCourse.code;
-
-document.querySelector("img").setAttribute("src", aCourse.logo);
-document.querySelector("img").setAttribute("alt", aCourse.name + " logo");
-
-
-console.log(aCourse.sections[0].sectionNum);
-
 
 function sectionTemplate(section) {
     return `<tr>
@@ -51,3 +39,15 @@ document.querySelector("#enrollStudent").addEventListener("click", function () {
     const sectionNum = document.querySelector("#sectionNumber").value;
     aCourse.enrollStudent(sectionNum);
 });
+
+console.log(aCourse.code);
+console.log(aCourse.name);
+
+document.querySelector("#courseName").textContent = aCourse.name;
+document.querySelector("#courseCode").textContent = aCourse.code;
+
+// document.querySelector("img").setAttribute("src", aCourse.logo);
+// document.querySelector("img").setAttribute("alt", aCourse.name + " logo");
+
+
+console.log(aCourse.sections[0].sectionNum);
