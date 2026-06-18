@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RecipeBook</title>
+    <meta name="description" content="Discover simple and delicious recipes for every
+      occasion. Browse our collection of home-cooked favorites.">
+
+    <!-- Open Graph (Facebook, LinkedIn, etc.) -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="RecipeBook">
+    <meta property="og:description" content="Discover simple and delicious recipes for
+      every occasion.">
+    <meta property="og:url" content="https://yourdomain.com/recipes/">
+    <meta property="og:image" content="images/social-preview-image.png">
+
+    <!-- X Card -->
+    <meta name="twitter:card" content="Social Preview Image">
+    <meta name="twitter:title" content="RecipeBook">
+    <meta name="twitter:description" content="Discover simple and delicious recipes for
+      every occasion.">
+    <meta name="twitter:image" content="images/social-preview-image.png">
+
+    <!-- Favicon & Apple Touch Icon -->
+    <link rel="icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="logo-group">
+            <img src="images/recipe-book.png" alt="RecipeBook logo icon" class="logo-icon" width="60" height="60">
+            <span class="logo-text">RecipeBook</span>
+        </div>
+    </header>
+
+
+    <main>
+
+        <section class="search-section" aria-label="Recipe search">
+            <form class="search-form" action="#" method="get" role="search">
+                <label for="recipe-search" class="visually-hidden">Find a recipe</label>
+                <input type="search" id="recipe-search" name="recipeSearch" class="search-input"
+                    placeholder="Find a recipe" aria-label="Search for a recipe">
+                <button type="submit" class="search-btn" aria-label="Submit search">
+                    <img src="images/search.svg" alt="" aria-hidden="true" width="22" height="22">
+                </button>
+            </form>
+        </section>
+
+        <section class="recipe-section" aria-label="Recipe results">
+            <article class="recipe-card">
+
+                <div class="recipe-img-wrap">
+                    <img src="images/apple-crisp.jpg"
+                        alt="A bowl of warm apple crisp topped with a scoop of vanilla ice cream" class="recipe-img"
+                        width="800" height="534" loading="lazy">
+                </div>
+
+
+                <div class="recipe-body">
+                    <span class="recipe-tag">dessert</span>
+
+                    <h2 class="recipe-title">Apple Crisp</h2>
+
+
+                    <span class="rating" role="img" aria-label="Rating: 4 out of 5 stars">
+                        <span aria-hidden="true" class="icon-star">⭐</span>
+                        <span aria-hidden="true" class="icon-star">⭐</span>
+                        <span aria-hidden="true" class="icon-star">⭐</span>
+                        <span aria-hidden="true" class="icon-star">⭐</span>
+                        <span aria-hidden="true" class="icon-star-empty">☆</span>
+                    </span>
+
+
+                    <p class="recipe-description">
+                        This apple crisp recipe is a simple yet delicious fall dessert that's
+                        great served warm with vanilla ice cream.
+                    </p>
+                </div>
+
+            </article>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="social">
+            <!-- Social media icons provided under CC from https://www.iconfinder.com/AlfredoCreates -->
+            <a href="#" aria-label="Instagram">
+                <img src="images/instagram_icon.svg" alt="instagram icon" width="28" height="28">
+            </a>
+            <a href="#" aria-label="YouTube">
+                <img src="images/youtube_icon.svg" alt="youtube icon" width="28" height="28">
+            </a>
+            <a href="#" aria-label="Pinterest">
+                <img src="images/pinterest_icon.svg" alt="pinterest icon" width="28" height="28">
+            </a>
+        </div>
+
+        <p class="attribution">
+            <a href="https://www.flaticon.com/free-icons/recipe" title="recipe icons" target="_blank"
+                rel="noopener noreferrer">Recipe icons created by Freepik - Flaticon</a>
+        </p>
+    </footer>
+
+</body>
+
+</html>
