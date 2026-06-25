@@ -4,6 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="recipes.js" defer></script>
+
     <title>RecipeBook</title>
     <meta name="description" content="Discover simple and delicious recipes for every
       occasion. Browse our collection of home-cooked favorites.">
@@ -45,7 +48,7 @@
             <form class="search-form" action="#" method="get" role="search">
                 <label for="recipe-search" class="visually-hidden">Find a recipe</label>
                 <input type="search" id="recipe-search" name="recipeSearch" class="search-input"
-                    placeholder="Find a recipe" aria-label="Search for a recipe">
+                    placeholder="Find a recipe" aria-label="Search for a recipe" required>
                 <button type="submit" class="search-btn" aria-label="Submit search">
                     <img src="images/search.svg" alt="" aria-hidden="true" width="22" height="22">
                 </button>
@@ -53,37 +56,7 @@
         </section>
 
         <section class="recipe-section" aria-label="Recipe results">
-            <article class="recipe-card">
-
-                <div class="recipe-img-wrap">
-                    <img src="images/apple-crisp.jpg"
-                        alt="A bowl of warm apple crisp topped with a scoop of vanilla ice cream" class="recipe-img"
-                        width="800" height="534" loading="lazy">
-                </div>
-
-
-                <div class="recipe-body">
-                    <span class="recipe-tag">dessert</span>
-
-                    <h2 class="recipe-title">Apple Crisp</h2>
-
-
-                    <span class="rating" role="img" aria-label="Rating: 4 out of 5 stars">
-                        <span aria-hidden="true" class="icon-star">⭐</span>
-                        <span aria-hidden="true" class="icon-star">⭐</span>
-                        <span aria-hidden="true" class="icon-star">⭐</span>
-                        <span aria-hidden="true" class="icon-star">⭐</span>
-                        <span aria-hidden="true" class="icon-star-empty">☆</span>
-                    </span>
-
-
-                    <p class="recipe-description">
-                        This apple crisp recipe is a simple yet delicious fall dessert that's
-                        great served warm with vanilla ice cream.
-                    </p>
-                </div>
-
-            </article>
+            <!-- Recipe cards are rendered here by script.js -->
         </section>
 
     </main>
