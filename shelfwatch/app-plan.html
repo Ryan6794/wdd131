@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShelfWatch - App Plan</title>
+  <link rel="stylesheet" href="styles/site-plan.css">
+</head>
+<body>
+
+  <header>
+    <h1>ShelfWatch Project Plan</h1>
+    <h2>Your Name</h2>
+    <h2>WDD 131</h2>
+  </header>
+
+  <hr>
+
+  <section>
+    <h2>Overview</h2>
+
+    <h3>Purpose</h3>
+    <p>
+      ShelfWatch helps readers who follow book series keep track of upcoming
+      release dates in one place. The site lets a user add books they're
+      waiting on, automatically flags books once their release date has
+      passed, and surfaces "coming soon" and "still unannounced" titles so
+      nothing slips through the cracks.
+    </p>
+
+    <h3>Audience</h3>
+    <p>
+      The primary audience is avid readers, especially fans of ongoing book
+      series (fantasy, sci-fi, etc.) who want a simple way to
+      remember when the next book in a series comes out without repeatedly
+      searching for release news themselves.
+    </p>
+
+    <h3>Dynamic elements</h3>
+    <p>
+      JavaScript powers nearly everything on the page beyond the static
+      layout:
+    </p>
+    <ul>
+      <li>
+        <strong>Objects:</strong> each book is stored as an object
+        (title, author, series, releaseDate, status, coverUrl,
+        acknowledged).
+      </li>
+      <li>
+        <strong>Arrays + array methods:</strong> all books live in one
+        array. <code>filter()</code> splits that array into "released,"
+        "coming soon," and "date unknown" groups; <code>forEach()</code>
+        builds a card in the DOM for each book in a group.
+      </li>
+      <li>
+        <strong>DOM interaction:</strong> a form listens for a
+        <code>submit</code> event to add a new book; "Got it" buttons on
+        alert cards listen for <code>click</code> events to dismiss an
+        alert; a search field listens for <code>input</code> events to
+        trigger the Google Books autofill dropdown.
+      </li>
+      <li>
+        <strong>Conditional branching:</strong> when a book is added or
+        rechecked, an if/else chain decides its status &mdash; released
+        (today's date is on/after the release date), coming soon (release
+        date is within 30 days), or unknown (no confirmed date yet, so it
+        gets queued for periodic rechecking).
+      </li>
+      <li>
+        <strong>Fetch/API call:</strong> a call to the Google Books API
+        (<code>https://www.googleapis.com/books/v1/volumes?q=</code>)
+        returns matching titles so the user can pick one and auto-fill
+        author, cover image, and (if available) publish date. The user can
+        still edit any field by hand before saving. Books saved with an
+        unknown release date get rechecked against the API periodically
+        (on a timer and via a manual "Check now" button) until a real date
+        appears.
+      </li>
+      <li>
+        <strong>Storage:</strong> the book array is saved to
+        <code>localStorage</code> so the list persists between visits.
+      </li>
+    </ul>
+  </section>
+
+  <hr>
+
+  <section>
+    <h2>Branding</h2>
+    <h3>Website Logo</h3>
+    <p>An open-book icon paired with the wordmark "ShelfWatch" in the heading font.</p>
+  </section>
+
+  <hr>
+
+  <section>
+    <h2>Style Guide</h2>
+
+    <h3>Color Palette</h3>
+    <p>Palette URL: <a href="https://coolors.co/396e94-e7c24f-a43312-381d2a-aabd8c">coolors.co/396e94-e7c24f-a43312-381d2a-aabd8c</a></p>
+
+    <table class="colors">
+      <tr>
+        <th>Primary</th>
+        <th>Secondary</th>
+        <th>Accent 1</th>
+        <th>Accent 2</th>
+      </tr>
+      <tr>
+        <td class="primary">#396E94</td>
+        <td class="secondary">#E7C24F</td>
+        <td class="accent1">#A43312</td>
+        <td class="accent2">white</td>
+      </tr>
+    </table>
+
+    <h3>Typography</h3>
+    <p>Headings: Lora (serif, readable and a little literary). Body text: Lato (clean sans-serif for easy reading on small screens).</p>
+
+    <h3>Pseudocode for your project</h3>
+    <ol>
+      <li>On page load, read the saved book array from localStorage (or start with an empty array).</li>
+      <li>Define a <code>renderCards(books)</code> function that:
+        <ul>
+          <li>uses <code>filter()</code> to split <code>books</code> into released, coming-soon, and unknown-date groups</li>
+          <li>uses <code>forEach()</code> on each group to build and insert a card element into the matching section of the DOM</li>
+        </ul>
+      </li>
+      <li>Define a <code>getStatus(book)</code> function that:
+        <ul>
+          <li>if <code>book.releaseDate</code> is unknown, return "checking"</li>
+          <li>else if today's date is on/after <code>releaseDate</code>, return "released"</li>
+          <li>else if <code>releaseDate</code> is within 30 days, return "coming soon"</li>
+          <li>else return "upcoming"</li>
+        </ul>
+      </li>
+      <li>Listen for the search input's <code>input</code> event, and on each keystroke (debounced) call <code>fetchBookMatches(query)</code>, which fetches from the Google Books API and fills a dropdown of matching titles.</li>
+      <li>When the user picks a dropdown match, auto-fill the author, cover image URL, and release date fields (if the API provided them), while leaving all fields editable.</li>
+      <li>Listen for the add-book form's <code>submit</code> event. Prevent the default page reload, build a new book object from the form fields, run it through <code>getStatus()</code>, push it into the books array, save the array to localStorage, and call <code>renderCards()</code> again.</li>
+      <li>Define a <code>checkPendingReleases()</code> function that filters the books array for status "checking," re-queries the Google Books API for each, and updates the object (and re-renders) if a real release date is now available. Run this function on a timer and also on a manual "Check now" button click.</li>
+      <li>Listen for clicks on each card's "Got it" button; set that book's <code>acknowledged</code> property to true, save to localStorage, and re-render so the alert styling disappears.</li>
+    </ol>
+
+    <h3>Wireframes</h3>
+    <p>Single page app &mdash; one wireframe covers the whole layout (mobile-first; the "My Collection" cards move into a grid on wider screens).</p>
+
+    <h4>Home / main page</h4>
+    <p>Header with app name, an "Add a Book" form with a title-search dropdown (Google Books autofill) plus editable author/series/date fields, an Alerts section for newly released books with a dismiss ("Got it") button, a Coming Soon section, and a My Collection grid of all tracked books.</p>
+    <img class="wireframe-img" src="wireframes/home-wireframe.svg" alt="Wireframe of the ShelfWatch home page showing the add-book form, alerts, coming soon list, and collection grid">
+
+  </section>
+
+</body>
+</html>

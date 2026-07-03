@@ -1,0 +1,58 @@
+<svg viewBox="0 0 380 900" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <rect width="380" height="900" fill="#f4f4f4"/>
+  <rect x="0" y="0" width="380" height="70" fill="#cccccc"/>
+  <text x="190" y="30" text-anchor="middle" font-size="16" fill="#333">ShelfWatch</text>
+  <text x="190" y="50" text-anchor="middle" font-size="10" fill="#555">track your next reads</text>
+
+  <rect x="20" y="90" width="340" height="150" fill="#e0e0e0" stroke="#999" stroke-dasharray="4"/>
+  <text x="190" y="110" text-anchor="middle" font-size="12" fill="#333">Add a Book</text>
+  <rect x="35" y="120" width="310" height="24" fill="#fff" stroke="#999"/>
+  <text x="45" y="136" font-size="10" fill="#888">Search title (Google Books autofill) ▾</text>
+  <rect x="35" y="152" width="150" height="24" fill="#fff" stroke="#999"/>
+  <text x="45" y="168" font-size="10" fill="#888">Author</text>
+  <rect x="195" y="152" width="150" height="24" fill="#fff" stroke="#999"/>
+  <text x="205" y="168" font-size="10" fill="#888">Series</text>
+  <rect x="35" y="184" width="150" height="24" fill="#fff" stroke="#999"/>
+  <text x="45" y="200" font-size="10" fill="#888">Release Date</text>
+  <rect x="195" y="184" width="150" height="24" fill="#396e94"/>
+  <text x="270" y="200" text-anchor="middle" font-size="10" fill="#fff">+ Add Book</text>
+
+  <text x="20" y="270" font-size="13" fill="#333">Alerts</text>
+  <rect x="20" y="280" width="340" height="50" fill="#fff3cd" stroke="#e7c24f"/>
+  <circle cx="45" cy="305" r="18" fill="#ddd"/>
+  <text x="70" y="300" font-size="11" fill="#333">Book Title Just Released!</text>
+  <text x="70" y="314" font-size="9" fill="#666">Series Name · Author</text>
+  <rect x="300" y="292" width="45" height="24" fill="#a43312"/>
+  <text x="322" y="308" text-anchor="middle" font-size="9" fill="#fff">Got it</text>
+
+  <text x="20" y="360" font-size="13" fill="#333">Coming Soon</text>
+  <rect x="20" y="370" width="340" height="90" fill="#fff" stroke="#ccc"/>
+  <rect x="30" y="380" width="45" height="65" fill="#ddd"/>
+  <text x="52" y="415" text-anchor="middle" font-size="8" fill="#999">cover</text>
+  <text x="85" y="395" font-size="11" fill="#333">Book Title</text>
+  <text x="85" y="410" font-size="9" fill="#666">Author · Series</text>
+  <rect x="85" y="418" width="90" height="14" fill="#396e94"/>
+  <text x="130" y="428" text-anchor="middle" font-size="8" fill="#fff">Releases in 12 days</text>
+
+  <rect x="20" y="470" width="340" height="90" fill="#fff" stroke="#ccc"/>
+  <rect x="30" y="480" width="45" height="65" fill="#ddd"/>
+  <text x="52" y="515" text-anchor="middle" font-size="8" fill="#999">cover</text>
+  <text x="85" y="495" font-size="11" fill="#333">Book Title</text>
+  <text x="85" y="510" font-size="9" fill="#666">Author · Series</text>
+  <rect x="85" y="518" width="110" height="14" fill="#999"/>
+  <text x="140" y="528" text-anchor="middle" font-size="8" fill="#fff">Date unknown · checking</text>
+
+  <text x="20" y="600" font-size="13" fill="#333">My Collection</text>
+  <rect x="20" y="610" width="105" height="150" fill="#fff" stroke="#ccc"/>
+  <rect x="30" y="620" width="85" height="100" fill="#ddd"/>
+  <text x="72" y="740" text-anchor="middle" font-size="9" fill="#333">Title</text>
+  <rect x="137" y="610" width="105" height="150" fill="#fff" stroke="#ccc"/>
+  <rect x="147" y="620" width="85" height="100" fill="#ddd"/>
+  <text x="189" y="740" text-anchor="middle" font-size="9" fill="#333">Title</text>
+  <rect x="254" y="610" width="105" height="150" fill="#fff" stroke="#ccc"/>
+  <rect x="264" y="620" width="85" height="100" fill="#ddd"/>
+  <text x="306" y="740" text-anchor="middle" font-size="9" fill="#333">Title</text>
+
+  <rect x="0" y="850" width="380" height="50" fill="#e7c24f"/>
+  <text x="190" y="880" text-anchor="middle" font-size="10" fill="#333">footer · mobile-first layout, cards stack in a single column below 480px, grid of 3 above</text>
+</svg>
