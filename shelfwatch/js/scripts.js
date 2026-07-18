@@ -4,7 +4,7 @@
 
 const STORAGE_KEY = "shelfwatch-books";
 const COMING_SOON_DAYS = 30;
-const RECHECK_INTERVAL_MS = 60000;
+const RECHECK_INTERVAL_MS = 15 * 60 * 1000; // 15 minutes
 const DESKTOP_PREVIEW_COUNT = 6;
 
 // literal starter array, used only the very first time (empty storage)
@@ -55,6 +55,18 @@ function saveBooks() {
 
 function generateId() {
   return "b" + Date.now() + Math.floor(Math.random() * 1000);
+}
+
+function buildSearchUrl(query) {
+  return "https://openlibrary.org/search.json?fields=title,author_name," +
+    "first_publish_year,cover_i,key&limit=8&q=" + encodeURIComponent(query);
+}
+
+function coverUrlFromId(coverId) {
+  if (!coverId) {
+    return "";
+  }
+  return "https://covers.openlibrary.org/b/id/" + coverId + "-M.jpg";
 }
 
 // ---------- status logic ----------
@@ -228,40 +240,42 @@ function handleAddBookSubmit(event) {
   showNotification('"' + newBook.title + '" was added to your list.');
 }
 
-// ---------- Google Books search / autofill ----------
+// ---------- Open Library search / autofill ----------
 
-function searchGoogleBooks(query) {
-  const url = "https://www.googleapis.com/books/v1/volumes?q=" +
-    encodeURIComponent(query);
+function searchOpenLibrary(query) {
+  const url = buildSearchUrl(query);
 
   fetch(url)
     .then(function (response) {
+      if (!response.ok) {
+        throw new Error("Request failed with status " + response.status);
+      }
       return response.json();
     })
     .then(function (data) {
-      if (data.items) {
-        populateSearchResults(data.items);
+      if (data.docs && data.docs.length > 0) {
+        populateSearchResults(data.docs);
       } else {
         activeSearchResults = [];
         showNotification("No matches found for that title.");
       }
     })
-    .catch(function () {
-      showNotification("Could not reach Google Books right now.");
+    .catch(function (error) {
+      console.error("Open Library search failed:", error);
+      showNotification("Could not reach Open Library right now.");
     });
 }
 
-function populateSearchResults(items) {
-  activeSearchResults = items;
+function populateSearchResults(docs) {
+  activeSearchResults = docs;
   const select = document.getElementById("search-results");
   select.innerHTML = '<option value="">Select a match&hellip;</option>';
 
-  items.forEach(function (item, index) {
-    const info = item.volumeInfo || {};
-    const authorText = info.authors ? info.authors.join(", ") : "Unknown author";
+  docs.forEach(function (doc, index) {
+    const authorText = doc.author_name ? doc.author_name.join(", ") : "Unknown author";
     const option = document.createElement("option");
     option.value = index;
-    option.textContent = info.title + " - " + authorText;
+    option.textContent = doc.title + " - " + authorText;
     select.appendChild(option);
   });
 
@@ -269,31 +283,51 @@ function populateSearchResults(items) {
 }
 
 function applySelectedResult(index) {
-  const item = activeSearchResults[index];
-  if (!item) {
+  const doc = activeSearchResults[index];
+  if (!doc) {
     return;
   }
-  const info = item.volumeInfo || {};
 
-  document.getElementById("book-title").value = info.title || "";
+  document.getElementById("book-title").value = doc.title || "";
   document.getElementById("book-author").value =
-    info.authors ? info.authors.join(", ") : "";
-  document.getElementById("book-description").value = info.description || "";
-
-  if (info.imageLinks && info.imageLinks.thumbnail) {
-    document.getElementById("book-cover").value = info.imageLinks.thumbnail;
-  }
+    doc.author_name ? doc.author_name.join(", ") : "";
+  document.getElementById("book-cover").value = coverUrlFromId(doc.cover_i);
 
   const dateField = document.getElementById("book-date");
   const unknownBox = document.getElementById("date-unknown");
 
-  if (info.publishedDate) {
-    dateField.value = info.publishedDate;
+  if (doc.first_publish_year) {
+    dateField.value = doc.first_publish_year + "-01-01";
     unknownBox.checked = false;
   } else {
     dateField.value = "";
     unknownBox.checked = true;
   }
+
+  // descriptions live on the separate "work" resource, so fetch it
+  // only after a result is picked, not for every search result
+  if (doc.key) {
+    fetchWorkDescription(doc.key);
+  }
+}
+
+function fetchWorkDescription(workKey) {
+  fetch("https://openlibrary.org" + workKey + ".json")
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      let text = "";
+      if (typeof data.description === "string") {
+        text = data.description;
+      } else if (data.description && data.description.value) {
+        text = data.description.value;
+      }
+      document.getElementById("book-description").value = text;
+    })
+    .catch(function (error) {
+      console.error("Could not load description:", error);
+    });
 }
 
 // ---------- periodic recheck of unknown release dates ----------
@@ -308,28 +342,27 @@ function checkPendingReleases() {
   }
 
   pending.forEach(function (book) {
-    const url = "https://www.googleapis.com/books/v1/volumes?q=" +
-      encodeURIComponent("intitle:" + book.title);
+    const url = buildSearchUrl(book.title);
 
     fetch(url)
       .then(function (response) {
         return response.json();
       })
       .then(function (data) {
-        if (!data.items || data.items.length === 0) {
+        if (!data.docs || data.docs.length === 0) {
           return;
         }
-        const info = data.items[0].volumeInfo || {};
-        if (info.publishedDate) {
-          book.releaseDate = info.publishedDate;
+        const doc = data.docs[0];
+        if (doc.first_publish_year) {
+          book.releaseDate = doc.first_publish_year + "-01-01";
           book.dateUnknown = false;
           saveBooks();
           renderBooks();
           showNotification('"' + book.title + '" now has a confirmed date!');
         }
       })
-      .catch(function () {
-        // silently skip - will retry on the next interval
+      .catch(function (error) {
+        console.error("Recheck failed for " + book.title + ":", error);
       });
   });
 }
@@ -396,7 +429,7 @@ function init() {
     .addEventListener("click", function () {
       const query = document.getElementById("search-input").value.trim();
       if (query) {
-        searchGoogleBooks(query);
+        searchOpenLibrary(query);
       }
     });
 

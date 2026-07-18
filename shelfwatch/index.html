@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
   <link rel="icon" href="img/logo.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
 
   <header class="site-header">
@@ -30,8 +32,12 @@
     <section id="add-book" class="add-book card">
       <h2>Add a Book</h2>
 
+      <p class="field-hint">
+        Search Open Library to autofill the form.
+      </p>
+
       <div class="search-row">
-        <label for="search-input">Search Google Books to autofill</label>
+        <label for="search-input">Search Open Library to autofill</label>
         <div class="search-controls">
           <input type="text" id="search-input" placeholder="Start typing a title&hellip;">
           <button type="button" id="search-btn">Search</button>
@@ -55,8 +61,10 @@
           </li>
           <li>
             <label for="book-cover">Cover image URL</label>
-            <input type="url" id="book-cover" name="coverUrl"
-              placeholder="https://&hellip;">
+            <input type="url" id="book-cover" name="coverUrl" placeholder="https://&hellip;">
+            <p class="field-hint">
+              Optional &mdash; leave blank and we'll use a placeholder cover.
+            </p>
           </li>
           <li>
             <label for="book-description">Description</label>
@@ -111,4 +119,5 @@
   </footer>
 
 </body>
+
 </html>
