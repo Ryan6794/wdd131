@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="js/scripts.js" defer></script>
+  <title>ShelfWatch - Track Your Next Reads</title>
+  <meta name="description" content="Track upcoming book releases in the series you follow.">
+  <link rel="icon" href="img/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <img src="img/logo.svg" alt="ShelfWatch logo" class="logo">
+    <div class="header-text">
+      <h1>ShelfWatch</h1>
+      <p class="tagline">Never miss the next book in a series</p>
+    </div>
+  </header>
+
+  <!-- hidden notification banner, shown/hidden by JS instead of alert() -->
+  <div id="notification-banner" class="notification-banner hidden" aria-live="polite">
+    <p id="notification-text"></p>
+    <button type="button" id="notification-dismiss" class="dismiss-btn">Got it</button>
+  </div>
+
+  <main>
+
+    <section id="add-book" class="add-book card">
+      <h2>Add a Book</h2>
+
+      <div class="search-row">
+        <label for="search-input">Search Google Books to autofill</label>
+        <div class="search-controls">
+          <input type="text" id="search-input" placeholder="Start typing a title&hellip;">
+          <button type="button" id="search-btn">Search</button>
+        </div>
+        <select id="search-results" class="hidden" aria-label="Search results"></select>
+      </div>
+
+      <form id="add-book-form">
+        <ul>
+          <li>
+            <label for="book-title">Title</label>
+            <input type="text" id="book-title" name="title" required>
+          </li>
+          <li>
+            <label for="book-author">Author</label>
+            <input type="text" id="book-author" name="author" required>
+          </li>
+          <li>
+            <label for="book-series">Series</label>
+            <input type="text" id="book-series" name="series">
+          </li>
+          <li>
+            <label for="book-cover">Cover image URL</label>
+            <input type="url" id="book-cover" name="coverUrl"
+              placeholder="https://&hellip;">
+          </li>
+          <li>
+            <label for="book-description">Description</label>
+            <textarea id="book-description" name="description" rows="3"></textarea>
+          </li>
+          <li class="date-row">
+            <label for="book-date">Release date</label>
+            <input type="date" id="book-date" name="releaseDate">
+            <label class="checkbox-label" for="date-unknown">
+              <input type="checkbox" id="date-unknown" name="dateUnknown">
+              Not announced yet
+            </label>
+          </li>
+          <li class="button-row">
+            <button type="submit">Add Book</button>
+          </li>
+        </ul>
+      </form>
+    </section>
+
+    <section id="book-list-section" class="book-list-section">
+      <div class="section-heading-row">
+        <h2>Your Books</h2>
+      </div>
+      <ul id="book-list" class="book-list"></ul>
+      <button type="button" id="expand-toggle" class="expand-toggle hidden">
+        Show more
+      </button>
+      <p id="empty-message" class="empty-message hidden">
+        No books yet &mdash; search above or add one by hand.
+      </p>
+    </section>
+
+  </main>
+
+  <!-- modal used for the "second page" description view -->
+  <div id="book-modal" class="modal hidden">
+    <div class="modal-content">
+      <button type="button" id="modal-close" class="modal-close" aria-label="Close">
+        &times;
+      </button>
+      <img id="modal-cover" src="" alt="" class="modal-cover">
+      <h3 id="modal-title"></h3>
+      <p id="modal-author"></p>
+      <p id="modal-status"></p>
+      <p id="modal-description"></p>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 ShelfWatch &middot; a WDD 131 final project</p>
+  </footer>
+
+</body>
+</html>
